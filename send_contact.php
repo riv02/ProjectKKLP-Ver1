@@ -2,7 +2,7 @@
 
 http_response_code(405);
 if($_POST['kirim']){
-	$admin = 'muzakkirtarang89@gmail.com';
+	$admin = 'teddyknight403@gmail.com';
 
 	$name = "";
     $email = "";    
