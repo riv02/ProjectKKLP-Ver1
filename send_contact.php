@@ -13,6 +13,6 @@ if($_POST['kirim']){
     $result = mail($admin, $name, $message, $headers);
     var_dump($result);
 
-    echo '<a href="index.html">Kembali ke halaman</a>';
+    echo '<a href="index.php">Kembali ke halaman</a>';
 }
 ?>
