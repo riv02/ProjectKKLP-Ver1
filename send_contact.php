@@ -1,5 +1,5 @@
 <?php
-if($_POST['kirim']){
+if(isset($_POST['kirim'])){
     $admin = 'teddyknight403@gmail.com';
     
     $name = htmlentities($_POST['name']);
@@ -11,7 +11,12 @@ if($_POST['kirim']){
                'Contact-Type: text/html; charset=utf-8';
 
     $result = mail($admin, $name, $message, $headers);
-    var_dump($result);
+    
+    if(!$result) {   
+       echo "Ada masalah...";// error
+      } else {
+        echo "Pesan berhasil dikirim...";// correct
+      }
 
     echo '<a href="index.html">Kembali ke halaman</a>';
 }
