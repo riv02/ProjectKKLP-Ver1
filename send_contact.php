@@ -1,5 +1,5 @@
 <?php
-if($_GET['kirim']){
+if($_POST['kirim']){
     $admin = 'teddyknight403@gmail.com';
     
     $name = htmlentities($_POST['name']);
