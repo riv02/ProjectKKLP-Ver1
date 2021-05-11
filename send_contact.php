@@ -1,6 +1,14 @@
 <?php
 
-http_response_code(405);
+$currentRequestMethod = $_SERVER['REQUEST_METHOD'];
+
+$allowedRequestMethods = array('POST', 'HEAD');
+
+if(!in_array($currentRequestMethod, $allowedRequestMethods)){
+    header($_SERVER["SERVER_PROTOCOL"]." 405 Method Not Allowed", true, 405);
+    exit;
+}
+
 if($_POST['kirim']){
 	$admin = 'teddyknight403@gmail.com';
 
