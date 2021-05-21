@@ -1,5 +1,6 @@
 <?php
 if(isset($_POST['kirim'])){
+    header("Location : index.html");
     $admin = 'teddyknight403@gmail.com';
     
     $name = htmlentities($_POST['name']);
