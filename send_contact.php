@@ -1,5 +1,6 @@
 <?php
  
+header('Access-Control-Allow-Origin: https://riv02.github.io/ProjectKKLP-Ver1/');
 if($_POST) {
     $admin = 'teddyknight403@gmail.com';
     
