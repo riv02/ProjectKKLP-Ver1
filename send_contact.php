@@ -1,24 +1,33 @@
 <?php
-if(isset($_POST['kirim'])){
-    header("Location : index.html");
+ 
+if($_POST) {
     $admin = 'teddyknight403@gmail.com';
     
-    $name = htmlentities($_POST['name']);
-    $email = htmlentities($_POST['email']);
-    $message = htmlentities($_POST['message']);
-
-    $headers = 'From: '.$email.' ' . "\r\n" .
-               'MIME-Version: 1.0' . "\r\n" .
-               'Contact-Type: text/html; charset=utf-8';
-
-    $result = mail($admin, $name, $message, $headers);
-    
-    if(!$result) {   
-       echo "Ada masalah...";// error
-      } else {
-        echo "Pesan berhasil dikirim...";// correct
-      }
-
-    echo '<a href="index.html">Kembali ke halaman</a>';
+    $name = "";
+    $email = "";
+    $message = "";
+     
+    if(isset($_POST['name'])) {
+      $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+    }
+     
+    if(isset($_POST['email'])) {
+        $email = str_replace(array("\r", "\n", "%0a", "%0d"), '', $_POST['email']);
+        $email = filter_var($email, FILTER_VALIDATE_EMAIL);
+    }
+     
+    $headers  = 'MIME-Version: 1.0' . "\r\n"
+    .'Content-type: text/html; charset=utf-8' . "\r\n"
+    .'From: ' . $email . "\r\n";
+     
+    if(mail($admin, $name, $message, $headers)) {
+        echo "<p>Thank you for contacting us, $name. You will get a reply within 24 hours.</p>";
+    } else {
+        echo '<p>We are sorry but the email did not go through.</p>';
+    }
+     
+} else {
+    echo '<p>Something went wrong</p>';
 }
+ 
 ?>
