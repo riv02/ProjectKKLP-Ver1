@@ -1,10 +1,10 @@
 <?php
-if(isset($_GET['kirim'])){
+if(isset($_POST['kirim'])){
     $admin = 'teddyknight403@gmail.com';
     
-    $name = htmlentities($_GET['name']);
-    $email = htmlentities($_GET['email']);
-    $message = htmlentities($_GET['message']);
+    $name = htmlentities($_POST['name']);
+    $email = htmlentities($_POST['email']);
+    $message = htmlentities($_POST['message']);
 
     $headers = 'From: '.$email.' ' . "\r\n" .
                'MIME-Version: 1.0' . "\r\n" .
